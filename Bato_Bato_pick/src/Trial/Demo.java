@@ -75,7 +75,7 @@ public class Demo extends JFrame {
         contentPane.add(centerPanel, BorderLayout.CENTER);
 
         // Button panel
-        JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 10));
+        JPanel buttonPanel = new JPanel(new GridLayout(2, 2, 10, 20));
         JButton rockButton = new JButton("ROCK");
         rockButton.setBackground(new Color(255, 105, 97));
         JButton paperButton = new JButton("PAPER");
@@ -84,6 +84,8 @@ public class Demo extends JFrame {
         scissorsButton.setBackground(new Color(135, 206, 250));
         JButton leaderboardButton = new JButton("LEADERBOARD");
         leaderboardButton.setBackground(new Color(144, 238, 144));
+        JButton resetButton = new JButton("RESET LEADERBOARD");
+        resetButton.setBackground(new Color(220, 220, 220));
         JButton exitButton = new JButton("EXIT");
         exitButton.setBackground(new Color(220, 220, 220));
 
@@ -91,6 +93,7 @@ public class Demo extends JFrame {
         buttonPanel.add(paperButton);
         buttonPanel.add(scissorsButton);
         buttonPanel.add(leaderboardButton);
+        buttonPanel.add(resetButton);
         buttonPanel.add(exitButton);
         contentPane.add(buttonPanel, BorderLayout.SOUTH);
 
@@ -119,6 +122,7 @@ public class Demo extends JFrame {
         scissorsButton.addActionListener(buttonListener);
 
         leaderboardButton.addActionListener(e -> leaderboard.showLeaderboard());
+        resetButton.addActionListener(e -> leaderboard.resetLeaderboard());
 
         exitButton.addActionListener(e -> {
             leaderboard.saveScore(playerScore);
