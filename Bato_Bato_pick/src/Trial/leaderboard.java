@@ -7,6 +7,7 @@ import java.util.*;
 public class leaderboard {
     private static final String LEADERBOARD_FILE = "leaderboard.txt";
 
+    // Save player score
     public void saveScore(int score) {
         String playerName = JOptionPane.showInputDialog("Enter your name for the leaderboard:");
         if (playerName != null && !playerName.trim().isEmpty()) {
@@ -19,6 +20,7 @@ public class leaderboard {
         }
     }
 
+    // Show leaderboard data
     public void showLeaderboard() {
         StringBuilder leaderboard = new StringBuilder("Leaderboard:\n");
         List<String> scores = new ArrayList<>();
@@ -39,10 +41,18 @@ public class leaderboard {
             for (String score : scores) {
                 leaderboard.append(score).append("\n");
             }
-            
         }
 
         JOptionPane.showMessageDialog(null, leaderboard.toString());
     }
-    
+
+    // Reset leaderboard data
+    public void resetLeaderboard() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(LEADERBOARD_FILE))) {
+            // Overwrite file with empty content
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        JOptionPane.showMessageDialog(null, "Leaderboard has been reset.");
+    }
 }
